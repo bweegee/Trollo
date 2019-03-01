@@ -1,2 +1,11 @@
-<h1>Boards#show</h1>
-<p>Find me in app/views/boards/show.html.erb</p>
+<h1><% @board.name %></h1>
+<div class="ui padded grid">
+  <% @board.lists.each do |list| %>
+    <div class="ui raised padded segment">
+      <div class="four wide column">
+        <%= link_to @board.lists.items, list %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
