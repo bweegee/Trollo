@@ -22,13 +22,15 @@ ActiveRecord::Schema.define(version: 2019_02_28_230126) do
   end
 
   create_table "lists", force: :cascade do |t|
-    t.string "item"
+    t.string "name"
+    t.bigint "boards_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["boards_id"], name: "index_lists_on_boards_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "action"
+    t.string "todo"
     t.bigint "list_id"
     t.bigint "board_id"
     t.datetime "created_at", null: false
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_230126) do
     t.index ["list_id"], name: "index_tasks_on_list_id"
   end
 
+  add_foreign_key "lists", "boards", column: "boards_id"
   add_foreign_key "tasks", "boards"
   add_foreign_key "tasks", "lists"
 end
