@@ -1,11 +1,11 @@
 <h1><% @board.name %></h1>
 <div class="ui padded grid">
-  <% @board.lists.each do |list| %>
-    <div class="ui raised padded segment">
-      <div class="four wide column">
-        <%= link_to @board.lists.items, list %>
-      </div>
+      <% @board.lists.each do |list| %>
+  <div class="four wide padded raised column">
+    <div class="ui padded segment">
+        <%= link_to @board.lists, list %>
     </div>
+  </div>
   <% end %>
 </div>
 
