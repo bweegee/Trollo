@@ -12,6 +12,16 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def create
+    @task = Task.new(task_params)
+
+    if @task.save
+      redirect_to @task
+    else
+      render :edit
+    end
+  end
+
   def edit
   end
 
@@ -19,5 +29,8 @@ class TasksController < ApplicationController
     def set_task
       @task = Task.find(params[:id])
     end
-
+    
+    def task_params
+      params.require(:task).permit(:todo)
+    end
 end

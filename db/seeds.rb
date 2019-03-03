@@ -5,14 +5,19 @@
 
   10.times do
     list = List.create(
-      item: Faker::Games::Zelda.location
+      name: Faker::Games::Zelda.location,
+      board_id: board.id
     )
 
     Task.create(
-      action:Faker::Games::Zelda.item,
-      board_id: board.id,
-      list_id: list.id
+      todo: Faker::Games::Zelda.character,
+      list_id: list.id,
+      board_id: board.id
     )
     end
   end
+
+puts "#{Task.count} Tasks created"
+puts "#{List.count} List created"
+puts "#{Board.count} Boards created"
 puts "done"
