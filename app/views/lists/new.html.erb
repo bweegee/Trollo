@@ -1,2 +1,9 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<h1>New List</h1>
+<%= form_with(model: [@board, @list], local: true, class: "ui form" ) do |f| %>
+<%= f.hidden_field :board_id, value: params[:board_id] %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, placeholder: "Add List Title" %>
+  </div>
+  <%= f.submit nil, class: "ui green button inverted" %>
+<% end %>

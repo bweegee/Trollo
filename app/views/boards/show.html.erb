@@ -1,5 +1,5 @@
 <h1><% @board.name %></h1>
-<div class="ui four column padded grid container">
+<div class="ui five column padded grid container">
 
   <% @board.lists.each do |list| %>
   <div class="column">
@@ -8,19 +8,19 @@
 
       <% list.tasks.each do |task| %>
       <div class="ui raised segment">
-        <p><%= task.todo %></p>
+        <h4><%= task.todo %></h4>
       </div>
       <% end %>
-      <div  class="ui raided segment">
-        <p>+Add a card</p>
-      </div>
+        <p><i class="plus icon"></i>Add a card</p>
     </div>
   </div>
   <% end %>
-  
+
   <div class="column">
     <div class="ui secondary segment">
-      <h3>+Add another list</h3>
+      <%= link_to new_board_list_path(@board) do %>
+        <i class="large green plus icon"></i>Add a list
+      <% end %>
     </div>
   </div>
 </div>
