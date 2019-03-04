@@ -1,11 +1,27 @@
 <h1><% @board.name %></h1>
-<div class="ui padded grid">
-      <% @board.lists.each do |list| %>
-  <div class="four wide padded raised column">
-    <div class="ui padded segment">
-        <%= link_to @board.lists, list %>
+<div class="ui four column padded grid container">
+
+  <% @board.lists.each do |list| %>
+  <div class="column">
+    <div class="ui tertiary segment">
+      <h3><%= list.name %></h3>
+
+      <% list.tasks.each do |task| %>
+      <div class="ui raised segment">
+        <p><%= task.todo %></p>
+      </div>
+      <% end %>
+      <div  class="ui raided segment">
+        <p>+Add a card</p>
+      </div>
     </div>
   </div>
   <% end %>
+  
+  <div class="column">
+    <div class="ui secondary segment">
+      <h3>+Add another list</h3>
+    </div>
+  </div>
 </div>
 
