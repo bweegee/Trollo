@@ -1,17 +1,26 @@
 <h1><% @board.name %></h1>
-<div class="ui five column padded grid container">
+<div class="ui four column padded grid container">
 
   <% @board.lists.each do |list| %>
   <div class="column">
     <div class="ui tertiary segment">
-      <h3><%= list.name %></h3>
+      <h3><%= list.name %>
+      <%= link_to edit_board_list_path(@board) do %>
+        <i class="pencil alternate icon"></i>
+      <% end %>
+      <%= link_to [@board, list], method: :delete do %>
+        <i class="x icon"></i>
+      <% end %>
+      </h3>
 
       <% list.tasks.each do |task| %>
       <div class="ui raised segment">
         <h4><%= task.todo %></h4>
       </div>
       <% end %>
-        <p><i class="plus icon"></i>Add a card</p>
+      <p>
+        <i class="plus icon"></i>Add a card
+      </p>
     </div>
   </div>
   <% end %>
@@ -24,4 +33,3 @@
     </div>
   </div>
 </div>
-

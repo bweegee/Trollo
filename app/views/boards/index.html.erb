@@ -1,13 +1,18 @@
 <h1>Boards</h1>
-<div class="ui padded grid">
+<div class="ui three column padded grid container">
+  
   <% @boards.each do |board| %>
-    <div class="ui raised padded segment">
-      <div class="four wide column">
-        <%= link_to board.name, board %>
-      </div>
+  <div class="column">
+    <div class="ui inverted segment">
+      <%= link_to board.name, board %>
+      <%= link_to board_path(board), method: :delete do %>
+        <i class="x icon"></i>
+      <% end %>
     </div>
+  </div>
   <% end %>
-  <div>
-    <%= link_to "Create New Board", new_board_path %>
+  
+  <div class="column">
+  <%= link_to "Create New Board", new_board_path %>
   </div>
 </div>

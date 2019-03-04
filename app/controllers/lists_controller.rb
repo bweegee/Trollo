@@ -23,7 +23,21 @@ class ListsController < ApplicationController
   def edit
   end
 
+  def update
+    if @list.update(list_params)
+      redirect_to @board
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @list.destroy
+    redirect_to @board
+  end
+
   private
+
    def set_board
     @board = Board.find(params[:board_id])
    end

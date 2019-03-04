@@ -1,19 +1,20 @@
 class TasksController < ApplicationController
+  before_action :set_list
   before_action :set_task, only: [:show, :destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = @list.tasks
   end
 
   def show
   end
 
   def new
-    @task = Task.new
+    @task = @list.tasks.new
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = @list.tasks.new(task_params)
 
     if @task.save
       redirect_to @task
@@ -26,10 +27,14 @@ class TasksController < ApplicationController
   end
 
   private
+    def set_list
+      @list = List.find(params[:id])
+    end
+
     def set_task
       @task = Task.find(params[:id])
     end
-    
+
     def task_params
       params.require(:task).permit(:todo)
     end
